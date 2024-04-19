@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,tsx,ts}'],
+  content: ["./src/**/*.{html,js,tsx,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        minecraft: ["minecraftia-regular", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
