@@ -4,7 +4,9 @@ import Window from './components/Window';
 function App() {
   return (
     <div className='flex justify-center items-center'>
-      <Window></Window>
+      <Window>
+        <div></div>
+      </Window>
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import TitleBar from './TItleBar';
+import { ReactNode } from "react";
+import TitleBar from "./TitleBar";
 
 interface WindowProps {
   children?: ReactNode;
@@ -7,7 +7,7 @@ interface WindowProps {
 
 const Window = ({ children }: WindowProps) => {
   return (
-    <div className='relative flex flex-col rounded-md md:w-[1000px] md:h-[600px] lg:w-[1000px] lg:h-[700px] xl:w-[1200px] xl:h-[800px] border border-gray-600 shadow-2xl bg-black'>
+    <div className="relative flex flex-col rounded-md border border-gray-600 bg-black bg-[url('./assets/Dirt_background_JE2.webp')] shadow-2xl md:h-[600px] md:w-[1000px] lg:h-[700px] lg:w-[1000px] xl:h-[800px] xl:w-[1200px]">
       <TitleBar />
       {children}
     </div>
