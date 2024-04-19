@@ -1,26 +1,18 @@
 import "./style.css";
 import Window from "./components/Window";
-
-const MenuButton = () => {
-  return (
-    <div className="w-96 border-2 border-black hover:border-white">
-      <button
-        className="font-minecraft flex w-full items-center justify-center rounded-none border-2 border-b-4 border-gray-300 border-b-gray-950/30 border-r-gray-950/30 bg-[#6E6E6E] bg-[url('./src/assets/stone.png')] bg-contain bg-repeat pb-0 antialiased bg-blend-exclusion"
-        style={{ textShadow: "#505050 2px 2px" }}
-      >
-        Singleplayer
-      </button>
-    </div>
-  );
-};
+import MenuButton from "./components/MenuButton";
 
 function App() {
   return (
     <div className="flex items-center justify-center">
       <Window>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex h-full flex-col items-center gap-8 pt-24">
           <img src="./src/assets/MemoryCraft.png" className="w-2/3" />
-          <MenuButton />
+          <div className="flex flex-col gap-4">
+            <MenuButton text="Singleplayer" />
+            <MenuButton text="How to play" />
+            <MenuButton text="GitHub" />
+          </div>
         </div>
       </Window>
     </div>
