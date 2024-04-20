@@ -24,7 +24,7 @@ const TitleBar = () => {
         <X
           size={20}
           strokeWidth={1}
-          className="h-full w-full px-3 hover:bg-red-500"
+          className="h-full w-full px-3 hover:bg-red-600"
         />
       </div>
     </div>

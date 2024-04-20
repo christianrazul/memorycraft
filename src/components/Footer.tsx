@@ -2,7 +2,7 @@ import minecraftHeart from "../assets/minecraft-heart.png";
 
 const Footer = () => {
   return (
-    <div className="font-minecraft absolute bottom-0 flex h-8 w-full items-center justify-between px-4">
+    <footer className="absolute bottom-0 flex h-8 w-full items-center justify-between px-4 font-minecraft">
       <p className="pb-0">MemoryCraft 1.20.24</p>
       <div className="flex items-center">
         <p className="pb-0">
@@ -12,11 +12,11 @@ const Footer = () => {
               christianrazul
             </a>{" "}
           </span>
-          with{" "}
+          {"with "}
         </p>
         <img src={minecraftHeart} alt="❤️" className="w-6 pb-2" />
       </div>
-    </div>
+    </footer>
   );
 };
 export default Footer;
