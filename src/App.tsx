@@ -2,24 +2,6 @@ import "./style.css";
 import Window from "./components/Window";
 import { useEffect, useState } from "react";
 
-const minecraftItems = [
-  { id: 1, name: "Wooden Pickaxe", type: "Tool", material: "Wood" },
-  { id: 2, name: "Stone Pickaxe", type: "Tool", material: "Stone" },
-  { id: 3, name: "Iron Pickaxe", type: "Tool", material: "Iron" },
-  { id: 4, name: "Diamond Pickaxe", type: "Tool", material: "Diamond" },
-  // { id: 5, name: "Gold Pickaxe", type: "Tool", material: "Gold" },
-  // { id: 6, name: "Wooden Sword", type: "Weapon", material: "Wood" },
-  // { id: 7, name: "Stone Sword", type: "Weapon", material: "Stone" },
-  // { id: 8, name: "Iron Sword", type: "Weapon", material: "Iron" },
-  // { id: 9, name: "Diamond Sword", type: "Weapon", material: "Diamond" },
-  // { id: 10, name: "Gold Sword", type: "Weapon", material: "Gold" },
-  // { id: 11, name: "Cooked Porkchop", type: "Food", material: "Pork" },
-  // { id: 12, name: "Steak", type: "Food", material: "Beef" },
-  // { id: 13, name: "Chicken", type: "Food", material: "Chicken" },
-  // { id: 14, name: "Bread", type: "Food", material: "Wheat" },
-  // { id: 15, name: "Apple", type: "Food", material: "Apple" },
-];
-
 interface CardProps {
   id: number;
   name: string;
@@ -30,7 +12,7 @@ interface CardProps {
 const Card = ({ id, name, imageSrc, onCardClick }: CardProps) => {
   return (
     <div
-      className="flex h-[110px] w-[120px] items-center justify-center bg-[url('./src/assets/ItemFrameEmpty.png')] bg-contain bg-center bg-no-repeat"
+      className="flex h-[110px] w-[120px] shrink-0 items-center justify-center bg-[url('./src/assets/ItemFrameEmpty.png')] bg-contain bg-center bg-no-repeat"
       onClick={() => {
         onCardClick(id);
       }}
@@ -165,7 +147,6 @@ function App() {
   const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
-    // shuffleCards(initialCards);
     generateInitialDeck("hard");
   }, []);
 
@@ -173,13 +154,13 @@ function App() {
     let cardCount = 0;
     switch (difficulty) {
       case "easy":
-        cardCount = 1;
+        cardCount = 5;
         break;
       case "medium":
-        cardCount = 2;
+        cardCount = 10;
         break;
       case "hard":
-        cardCount = 3;
+        cardCount = 15;
         break;
       default:
         return undefined; // Handle invalid difficulty gracefully
@@ -225,20 +206,22 @@ function App() {
   return (
     <div className="flex items-center justify-center">
       <Window>
-        <div className="flex h-full w-full items-center justify-center gap-8 pt-24">
-          {cards.map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              imageSrc={item.imageSrc}
-              onCardClick={(id) => {
-                handleCardClick(id);
-              }}
-            />
-          ))}
+        <div className="flex h-full w-full flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:w-11/12 lg:w-3/4 xl:w-2/3">
+            {cards.map((item) => (
+              <Card
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                imageSrc={item.imageSrc}
+                onCardClick={(id) => {
+                  handleCardClick(id);
+                }}
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col items-center gap-4">
           <p>Current Score: {currentScore}</p>
           <p>High Score: {highScore}</p>
         </div>
