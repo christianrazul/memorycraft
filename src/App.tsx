@@ -23,19 +23,20 @@ const minecraftItems = [
 interface CardProps {
   id: number;
   name: string;
+  imageSrc: string;
   onCardClick: (id: number) => void;
 }
 
-const Card = ({ id, name, onCardClick }: CardProps) => {
+const Card = ({ id, name, imageSrc, onCardClick }: CardProps) => {
   return (
     <div
-      className=""
+      className="flex h-[120px] w-[120px] items-center justify-center bg-[url('./src/assets/ItemFrameEmpty.png')] bg-contain bg-center bg-no-repeat"
       onClick={() => {
         onCardClick(id);
       }}
       style={{ userSelect: "none" }}
     >
-      {id + " " + name}
+      <img src={imageSrc} className="h-16 w-16" />
     </div>
   );
 };
@@ -44,15 +45,21 @@ type CardType = {
   id: number;
   name: string;
   clicked: boolean;
+  imageSrc: string;
 };
 
 function App() {
   const initialCards: CardType[] = [
-    { id: 1, name: "Wooden_Pickaxe", clicked: false },
-    { id: 2, name: "Iron_Pickaxe", clicked: false },
-    { id: 3, name: "Diamond_Pickaxe", clicked: false },
-    { id: 4, name: "Gold_Pickaxe", clicked: false },
-    { id: 5, name: "Stone_Pickaxe", clicked: false },
+    {
+      id: 1,
+      name: "Wooden_Pickaxe",
+      clicked: false,
+      imageSrc: "./src/assets/tools/Wooden_Pickaxe.webp",
+    },
+    // { id: 2, name: "Iron_Pickaxe", clicked: false },
+    // { id: 3, name: "Diamond_Pickaxe", clicked: false },
+    // { id: 4, name: "Gold_Pickaxe", clicked: false },
+    // { id: 5, name: "Stone_Pickaxe", clicked: false },
   ];
 
   const [cards, setCards] = useState<CardType[]>(initialCards);
@@ -100,6 +107,7 @@ function App() {
               key={item.id}
               id={item.id}
               name={item.name}
+              imageSrc={item.imageSrc}
               onCardClick={(id) => {
                 handleCardClick(id);
               }}
