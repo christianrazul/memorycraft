@@ -53,10 +53,18 @@ const HomePage = ({ onDifficulty }: HomePageProps) => {
           <img src="./src/assets/MemoryCraft.png" className="w-2/3" />
           <div className="flex flex-col gap-4">
             <MenuButton text="Singleplayer" to="/play" />
-            <MenuButton text="How to play" />
-            <MenuButton text="GitHub" />
             <DifficultyButton
               onDifficulty={(difficulty) => onDifficulty(difficulty)}
+            />
+            <MenuButton text="How to play" to="/howtoplay" />
+            <MenuButton
+              text="GitHub"
+              onClick={() =>
+                window.open(
+                  "https://github.com/christianrazul/memorycraft",
+                  "_blank",
+                )
+              }
             />
           </div>
         </div>

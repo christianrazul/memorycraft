@@ -4,6 +4,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import GamePage from "./pages/GamePage";
 import { useState } from "react";
+import InstructionsPage from "./pages/InstructionsPage";
+import WinnerPage from "./pages/WinnerPage";
 
 function App() {
   const [diff, setDiff] = useState<"peaceful" | "easy" | "normal" | "hard">(
@@ -19,6 +21,14 @@ function App() {
     {
       path: "/play",
       element: <GamePage difficulty={diff} />,
+    },
+    {
+      path: "/howtoplay",
+      element: <InstructionsPage />,
+    },
+    {
+      path: "/win",
+      element: <WinnerPage />,
     },
   ]);
 

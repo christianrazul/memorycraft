@@ -5,6 +5,7 @@ import { shuffleArray } from "../utils/shuffleArray";
 import { initialCards } from "../utils/items";
 import { CardType } from "../types/CardType";
 import Card from "../components/Card";
+import ErrorWindow from "../components/ErrorWindow";
 
 interface GamePageProps {
   difficulty: "peaceful" | "easy" | "normal" | "hard";
@@ -15,6 +16,7 @@ function GamePage({ difficulty }: GamePageProps) {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [goalScore, setGoalScore] = useState(1);
+  const [showErrorWindow, setShowErrorWindow] = useState(false);
 
   useEffect(() => {
     generateInitialDeck(difficulty);
@@ -22,8 +24,8 @@ function GamePage({ difficulty }: GamePageProps) {
 
   useEffect(() => {
     if (currentScore === goalScore) {
-      console.log("you win!");
       setHighScore(currentScore);
+      setShowErrorWindow(true);
     }
   }, [goalScore, currentScore]);
 
@@ -83,35 +85,41 @@ function GamePage({ difficulty }: GamePageProps) {
 
   return (
     <div className="flex items-center justify-center">
-      <Window>
-        <div className="flex h-full w-full flex-wrap items-center justify-center gap-4">
-          <div className="flex flex-wrap items-center justify-center gap-4 md:w-11/12 lg:w-3/4 xl:w-2/3">
-            {cards.map((item) => (
-              <Card
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                imageSrc={item.imageSrc}
-                onCardClick={(id) => {
-                  handleCardClick(id);
-                }}
-              />
-            ))}
+      {showErrorWindow ? (
+        <Window>
+          <ErrorWindow />
+        </Window>
+      ) : (
+        <Window>
+          <div className="flex h-full w-full flex-wrap items-center justify-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:w-11/12 lg:w-3/4 xl:w-2/3">
+              {cards.map((item) => (
+                <Card
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  imageSrc={item.imageSrc}
+                  onCardClick={(id) => {
+                    handleCardClick(id);
+                  }}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col items-center justify-center gap-4 ">
-          <p className="font-minecraft text-yellow-400">
-            Current Score: {currentScore}
-          </p>
+          <div className="flex flex-col items-center justify-center gap-4 ">
+            <p className="font-minecraft text-yellow-400">
+              Current Score: {currentScore}
+            </p>
 
-          <p className="font-minecraft  text-green-600">
-            High Score: {highScore}
-          </p>
-          <p className="font-minecraft text-orange-500">
-            Goal Score: {goalScore}
-          </p>
-        </div>
-      </Window>
+            <p className="font-minecraft  text-green-600">
+              High Score: {highScore}
+            </p>
+            <p className="font-minecraft text-orange-500">
+              Goal Score: {goalScore}
+            </p>
+          </div>
+        </Window>
+      )}
     </div>
   );
 }
