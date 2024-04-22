@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# MemoryCraft
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to MemoryCraft, a delightful Minecraft-themed memory challenge game! This project started as a fun side venture, a sandbox for me to delve into the depths of ReactJS and TailwindCSS. It’s not just a game—it's a representation of my learning journey.
 
-Currently, two official plugins are available:
+![image](https://github.com/christianrazul/memorycraft/assets/101724618/3c1c4b69-7826-4224-8fef-a3d6646c09f1)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/christianrazul/memorycraft/assets/101724618/3e0116df-1b94-4121-b86a-6f557d4af2ae)
 
-## Expanding the ESLint configuration
+## Live Application
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Experience MemoryCraft live. The application is deployed and available for use at: [MemoryCraft Deployment](https://memorycraft.vercel.app/)
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **Singleplayer Mode**: A personal test of memory, featuring a grid of Minecraft items to match.
+- **Adjustable Difficulty**: Begin with a 'Peaceful' mode and challenge yourself as you progress.
+- **How to play**: Simplest of instructions.
+- **Open-Source**: See my spaghetti code in flesh!
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Core Learnings
+- Explored **ReactJS**: Reaffirming my knowledge in hooks such as `useState` and `useEffect` and create responsive/dynamic UI components.
+- Navigation using **React-Router-DOM**: Learned about `react-router-dom` and properly used to the best of my ability `createBrowserRouter`.
+- Styled with **TailwindCSS**: Embracing the utility-first approach to use Minecraft's design and pleasing aesthetic.
+- Established **Proper File Structuring**: Keeping the project organized and maintainable.
+
+## Installation and Gameplay
+
+1. Clone the repository or download the latest release.
+2. Navigate to the project directory.
+3. Install the dependencies with `npm install`.
+4. Run `npm start` to launch the game in development mode.
+
+Flip tiles, find pairs, keep track of your score, and aim to beat your best. Can you remember where everything is?
+
+## How to Contribute
+
+If you're interested in contributing to the project, I'd warmly welcome your pull requests. Whether it's adding new features, fixing bugs, or improving the codebase, your input is valuable.
+
+## License
+This project is open-sourced under the MIT License. See the LICENSE file for more information.
+
+Thank you for visiting my project!
+Built with ❤️ by christianrazul
