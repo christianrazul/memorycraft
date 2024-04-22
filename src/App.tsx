@@ -145,12 +145,22 @@ function App() {
   const [cards, setCards] = useState<CardType[]>(initialCards);
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [goalScore, setGoalScore] = useState(1);
 
   useEffect(() => {
-    generateInitialDeck("hard");
+    generateInitialDeck("easy");
   }, []);
 
-  const generateInitialDeck = (difficulty: string): CardType[] | undefined => {
+  useEffect(() => {
+    if (currentScore === goalScore) {
+      console.log("you win!");
+      setHighScore(currentScore);
+    }
+  }, [goalScore, currentScore]);
+
+  const generateInitialDeck = (
+    difficulty: "easy" | "medium" | "hard",
+  ): CardType[] | undefined => {
     let cardCount = 0;
     switch (difficulty) {
       case "easy":
@@ -166,25 +176,25 @@ function App() {
         return undefined; // Handle invalid difficulty gracefully
     }
 
+    // get a shuffled deck and make a new deck based on the shuffled deck up to cardCount
     const shuffledDeck = shuffleArray([...initialCards]);
     const newDeck = shuffledDeck.slice(0, cardCount);
 
+    setGoalScore(cardCount);
     setCards(newDeck);
   };
 
   const shuffleCards = (toBeShuffled: CardType[]) => {
-    const shuffledCards = [...toBeShuffled].sort(() => Math.random() - 0.5);
+    const shuffledCards = shuffleArray(toBeShuffled);
     setCards(shuffledCards);
   };
 
   const shuffleArray = <T,>(array: T[]): T[] => {
     return array.sort(() => Math.random() - 0.5);
   };
+
   const handleCardClick = (id: number) => {
-    console.log(id);
     const cardIndex = cards.findIndex((card) => card.id === id);
-    console.log(cardIndex);
-    console.log(cards);
     let newCards = [...cards];
     // Card has been clicked before
     if (cards[cardIndex].clicked) {
@@ -222,8 +232,9 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col items-center gap-4">
-          <p>Current Score: {currentScore}</p>
-          <p>High Score: {highScore}</p>
+          <p className="font-minecraft">Current Score: {currentScore}</p>
+          <p className="font-minecraft">High Score: {highScore}</p>
+          <p className="font-minecraft">Goal Score: {goalScore}</p>
         </div>
       </Window>
     </div>
