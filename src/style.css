@@ -791,6 +791,18 @@ video {
   background-image: url('./src/assets/stone.png');
 }
 
+.bg-\[url\(\'\.\.\/public\/assets\/ItemFrameEmpty\.png\'\)\] {
+  background-image: url('../public/assets/ItemFrameEmpty.png');
+}
+
+.bg-\[url\(\'\.\.\/\.\.\/public\/assets\/ItemFrameEmpty\.png\'\)\] {
+  background-image: url('../../public/assets/ItemFrameEmpty.png');
+}
+
+.bg-\[url\(\'\.\.\/\.\.\/public\/assets\/stone\.png\'\)\] {
+  background-image: url('../../public/assets/stone.png');
+}
+
 .bg-contain {
   background-size: contain;
 }

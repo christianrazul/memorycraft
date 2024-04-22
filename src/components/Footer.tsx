@@ -1,4 +1,4 @@
-import minecraftHeart from "../assets/minecraft-heart.png";
+import minecraftHeart from "../../public/assets/minecraft-heart.png";
 
 const Footer = () => {
   return (
