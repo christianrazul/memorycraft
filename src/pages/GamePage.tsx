@@ -87,6 +87,7 @@ function GamePage({ difficulty }: GamePageProps) {
     <div className="flex items-center justify-center">
       {showErrorWindow ? (
         <Window>
+          <div className="h-full w-full"></div>
           <ErrorWindow />
         </Window>
       ) : (

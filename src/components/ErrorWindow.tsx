@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ErrorWindow = () => {
   return (
-    <div className="absolute left-1/2 top-1/2 flex w-96 -translate-x-1/2 -translate-y-1/2 transform flex-col bg-white text-black">
+    <div className="absolute left-1/2 top-1/2 flex w-96 -translate-x-1/2 -translate-y-1/2 transform flex-col border border-black bg-white text-black shadow-md">
       <div className="flex h-8 justify-between">
         <p className="flex items-center pl-3 text-sm text-gray-500">
           MemoryCraft 1.20.24
