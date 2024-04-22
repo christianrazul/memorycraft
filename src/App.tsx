@@ -1,7 +1,7 @@
 import "./style.css";
 import Window from "./components/Window";
 import { useEffect, useState } from "react";
-
+import { shuffleArray } from "./utils/shuffleArray";
 interface CardProps {
   id: number;
   name: string;
@@ -12,11 +12,10 @@ interface CardProps {
 const Card = ({ id, name, imageSrc, onCardClick }: CardProps) => {
   return (
     <div
-      className="flex h-[110px] w-[120px] shrink-0 items-center justify-center bg-[url('./src/assets/ItemFrameEmpty.png')] bg-contain bg-center bg-no-repeat"
+      className="flex h-[110px] w-[120px] shrink-0 select-none items-center justify-center bg-[url('./src/assets/ItemFrameEmpty.png')] bg-contain bg-center bg-no-repeat"
       onClick={() => {
         onCardClick(id);
       }}
-      style={{ userSelect: "none" }}
     >
       <img src={imageSrc} className="mt-2 h-16 w-16 drop-shadow-lg" />
     </div>
@@ -148,7 +147,7 @@ function App() {
   const [goalScore, setGoalScore] = useState(1);
 
   useEffect(() => {
-    generateInitialDeck("easy");
+    generateInitialDeck("hard");
   }, []);
 
   useEffect(() => {
@@ -189,10 +188,6 @@ function App() {
     setCards(shuffledCards);
   };
 
-  const shuffleArray = <T,>(array: T[]): T[] => {
-    return array.sort(() => Math.random() - 0.5);
-  };
-
   const handleCardClick = (id: number) => {
     const cardIndex = cards.findIndex((card) => card.id === id);
     let newCards = [...cards];
@@ -231,10 +226,17 @@ function App() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4">
-          <p className="font-minecraft">Current Score: {currentScore}</p>
-          <p className="font-minecraft">High Score: {highScore}</p>
-          <p className="font-minecraft">Goal Score: {goalScore}</p>
+        <div className="flex flex-col items-center justify-center gap-4 ">
+          <p className="font-minecraft text-yellow-400">
+            Current Score: {currentScore}
+          </p>
+
+          <p className="font-minecraft  text-green-600">
+            High Score: {highScore}
+          </p>
+          <p className="font-minecraft text-orange-500">
+            Goal Score: {goalScore}
+          </p>
         </div>
       </Window>
     </div>
