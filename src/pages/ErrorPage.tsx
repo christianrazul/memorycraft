@@ -7,9 +7,10 @@ const ErrorPage = () => {
       <Window>
         <div className="flex h-full flex-col items-center gap-8 pt-24">
           <img src="./src/assets/MemoryCraft.png" className="w-2/3" />
-          <h1 className="font-minecraft">Page not found</h1>
+          <h1 className="font-minecraft text-xl text-red-700">
+            Error 404: Page not found
+          </h1>
           <MenuButton text="Home" to="/"></MenuButton>
-          <MenuButton text="Home"></MenuButton>
         </div>
       </Window>
     </div>
