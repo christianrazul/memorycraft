@@ -7,7 +7,7 @@ import { CardType } from "../types/CardType";
 import Card from "../components/Card";
 
 interface GamePageProps {
-  difficulty: "easy" | "medium" | "hard";
+  difficulty: "peaceful" | "easy" | "normal" | "hard";
 }
 
 function GamePage({ difficulty }: GamePageProps) {
@@ -28,14 +28,17 @@ function GamePage({ difficulty }: GamePageProps) {
   }, [goalScore, currentScore]);
 
   const generateInitialDeck = (
-    difficulty: "easy" | "medium" | "hard",
+    difficulty: "peaceful" | "easy" | "normal" | "hard",
   ): CardType[] | undefined => {
     let cardCount = 0;
     switch (difficulty) {
+      case "peaceful":
+        cardCount = 3;
+        break;
       case "easy":
         cardCount = 5;
         break;
-      case "medium":
+      case "normal":
         cardCount = 10;
         break;
       case "hard":
