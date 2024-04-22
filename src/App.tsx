@@ -1,8 +1,9 @@
 import "./style.css";
-import GamePage from "./pages/GamePage";
+// import GamePage from "./pages/GamePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return <GamePage difficulty="medium" />;
+  return <HomePage />;
 }
 
 export default App;

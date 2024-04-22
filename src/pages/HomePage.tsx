@@ -1,4 +1,4 @@
-import "./style.css";
+import "../style.css";
 import Window from "../components/Window";
 import MenuButton from "../components/MenuButton";
 
