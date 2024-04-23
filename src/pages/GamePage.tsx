@@ -6,6 +6,7 @@ import { initialCards } from "../utils/items";
 import { CardType } from "../types/CardType";
 import Card from "../components/Card";
 import ErrorWindow from "../components/ErrorWindow";
+import Title from "../components/Title";
 
 interface GamePageProps {
   difficulty: "peaceful" | "easy" | "normal" | "hard";
@@ -17,10 +18,26 @@ function GamePage({ difficulty }: GamePageProps) {
   const [highScore, setHighScore] = useState(0);
   const [goalScore, setGoalScore] = useState(1);
   const [showErrorWindow, setShowErrorWindow] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    generateInitialDeck(difficulty);
-  }, []);
+    const timeoutDuration = {
+      peaceful: 1000,
+      easy: 2000,
+      normal: 3000,
+      hard: 5000,
+    };
+
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      generateInitialDeck(difficulty);
+      setIsLoading(false);
+    }, timeoutDuration[difficulty] || 1000);
+
+    // Cleanup function to clear the timeout
+    return () => clearTimeout(timer);
+  }, [difficulty]);
 
   useEffect(() => {
     if (currentScore === goalScore) {
@@ -85,9 +102,15 @@ function GamePage({ difficulty }: GamePageProps) {
 
   return (
     <div className="flex items-center justify-center">
-      {showErrorWindow ? (
+      {isLoading ? (
         <Window>
-          <div className="h-full w-full"></div>
+          <div className="flex h-full flex-col items-center gap-8 pt-24">
+            <Title />
+            <h1 className="font-minecraft text-xl">Loading...</h1>
+          </div>
+        </Window>
+      ) : showErrorWindow ? (
+        <Window>
           <ErrorWindow />
         </Window>
       ) : (
@@ -100,9 +123,7 @@ function GamePage({ difficulty }: GamePageProps) {
                   id={item.id}
                   name={item.name}
                   imageSrc={item.imageSrc}
-                  onCardClick={(id) => {
-                    handleCardClick(id);
-                  }}
+                  onCardClick={handleCardClick}
                 />
               ))}
             </div>
@@ -111,8 +132,7 @@ function GamePage({ difficulty }: GamePageProps) {
             <p className="font-minecraft text-yellow-400">
               Current Score: {currentScore}
             </p>
-
-            <p className="font-minecraft  text-green-600">
+            <p className="font-minecraft text-green-600">
               High Score: {highScore}
             </p>
             <p className="font-minecraft text-orange-500">
