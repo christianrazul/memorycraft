@@ -8,7 +8,7 @@ interface CardProps {
 const Card = ({ id, imageSrc, onCardClick }: CardProps) => {
   return (
     <div
-      className="flex h-[110px] w-[120px] shrink-0 select-none items-center justify-center bg-[url('../../public/assets/ItemFrameEmpty.png')] bg-contain bg-center bg-no-repeat"
+      className="flex h-[110px] w-[120px] shrink-0 select-none items-center justify-center bg-[url('../../public/assets/ItemFrameEmpty.webp')] bg-contain bg-center bg-no-repeat"
       onClick={() => {
         onCardClick(id);
       }}

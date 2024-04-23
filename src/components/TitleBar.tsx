@@ -3,11 +3,7 @@ const TitleBar = () => {
   return (
     <div className="flex h-8 w-full items-center justify-between border-b border-gray-600 bg-black">
       <div className="ml-3 flex items-center gap-1">
-        <img
-          src="/assets/Item_Frame_29_JE3.webp"
-          alt="icon"
-          className="h-5 w-5"
-        />
+        <img src="/assets/Item_Frame.webp" alt="icon" className="h-5 w-5" />
         <p>MemoryCraft 1.20.24</p>
       </div>
       <div className="flex h-full items-center">

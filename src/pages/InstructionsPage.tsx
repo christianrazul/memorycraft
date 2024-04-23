@@ -1,4 +1,5 @@
 import MenuButton from "../components/MenuButton";
+import Title from "../components/Title";
 import Window from "../components/Window";
 
 const InstructionsPage = () => {
@@ -6,7 +7,7 @@ const InstructionsPage = () => {
     <div className="flex items-center justify-center">
       <Window>
         <div className="flex h-full flex-col items-center gap-8 pt-24">
-          <img src="../../public/assets/MemoryCraft.png" className="w-2/3" />
+          <Title />
           <h1 className="font-minecraft text-xl">
             Just avoid clicking on the same item twice!
           </h1>

@@ -2,6 +2,7 @@ import "../style.css";
 import Window from "../components/Window";
 import MenuButton from "../components/MenuButton";
 import DifficultyButton from "../components/DifficultyButton";
+import Title from "../components/Title";
 
 interface HomePageProps {
   onDifficulty: (difficulty: "peaceful" | "easy" | "normal" | "hard") => void;
@@ -12,7 +13,7 @@ const HomePage = ({ onDifficulty }: HomePageProps) => {
     <div className="flex items-center justify-center">
       <Window>
         <div className="flex h-full flex-col items-center gap-8 pt-24">
-          <img src="../../public/assets/MemoryCraft.png" className="w-2/3" />
+          <Title />
           <div className="flex flex-col gap-4">
             <MenuButton text="Singleplayer" to="/play" />
             <DifficultyButton
